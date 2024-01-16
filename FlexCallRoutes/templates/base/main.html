@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>Chat It!</title>
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
+        <link rel="stylesheet" type='text/css' media='screen' href="{% static 'styles/main.css' %}"/>
+        <link rel="stylesheet" href="{% static 'images/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+        <!-- <script src="main.js"></script> -->
+    </head>
+    <body>
+        <h1>Chat It!</h1>
+        {% block content %}
+
+        {% endblock content %}
+    </body>
+    <script type="text/javascript" src="{% static 'js/streams.js' %}"></script>
+</html>

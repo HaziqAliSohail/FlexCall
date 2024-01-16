@@ -1,0 +1,51 @@
+{% extends 'base/main.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <section class="form-container">
+        <i class="fa fa-4x fa-commenting" aria-hidden="true" ></i>
+        <div>
+            <h1>Welcome to your Chat It!</h1>
+            <p>A group video calling application</p>
+        <div>
+        <form id="form">
+            <div class="form-field">
+                <input type="text" name="room" placeholder="Enter Room Name"></input>
+                <input type="text" name="username" placeholder="Enter Your Name"></input>
+            </div>
+            <div class="form-field">
+                <input id="join" type="submit" value="Join Room!"></input>
+            </div>
+        </form>
+    </section>
+    
+
+</main>
+<script type="text/javascript">
+    let form = document.getElementById("form");
+    let handleSubmit = async (e)=>{
+        e.preventDefault();
+
+        await fetch('http://127.0.0.1:8000/get_Token/').then((res)=>res.json()).then((res)=>{
+            let data = res;
+            
+            let UID = data.uid;
+            let token = data.token;
+            let roomId = data.roomid;
+
+            sessionStorage.setItem('UID', UID);
+            sessionStorage.setItem('token', token);
+            sessionStorage.setItem('roomId', roomId);
+        });
+        
+        
+        
+        let room = e.target.room.value;
+        
+        sessionStorage.setItem('room',room)
+        
+    }
+    form.addEventListener("submit", handleSubmit);
+</script>
+{% endblock content %}
